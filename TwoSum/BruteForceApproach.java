@@ -1,5 +1,5 @@
-package arrays;
-public class TwoSum {
+package TwoSum;
+public class BruteForceApproach {
     public static void main(String[] args) {
         int[] arr = {45, 6, 9, 87, 2};
         int target = 89;

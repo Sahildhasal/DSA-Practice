@@ -1,7 +1,7 @@
-package HashMap;
+package TwoSum;
 import java.util.*;
 
-public class TwoSum {
+public class HashMapApproach {
 
     public static void main(String[] args) {
         int[] arr = {1, 4, 87, 5, 34};
