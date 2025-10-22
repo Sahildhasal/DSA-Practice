@@ -1,6 +1,6 @@
 package FindPeakElement;
 
-public class BruteForceApproach {
+public class OptimizedBinarySearchApproach {
     public static void main(String[] args) {
         int[] numsArray = {1,2,3,99,1};
         int target = 7;    
