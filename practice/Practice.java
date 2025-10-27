@@ -3,56 +3,33 @@ package practice;
 public class Practice {
 
     public static void main(String[] args) {
-        // Input: nums = [4,5,6,7,0,1,2], target = 0
-        // Output: 4
-        int[] numsArray = {1,2,3,3,3,3,4,5,9};
-        int target = 3;
-        int result1 = findBestResult1(numsArray, target);
-        int result2 = findBestResult2(numsArray, target);
-        System.out.println("result is " + result1 + " " + result2);
-    }
+        // nums = [1, 2, 3, 4, 5, 6, 7]
+        // k = 3
+        // output = [5,6,7,1,2,3,4]
 
-    public static int findBestResult1(int[] numsArray, int target){
-        int first = -1;
-        int left = 0;
-        int right = numsArray.length - 1;
+        int[] numsArray = {1, 2, 3, 4, 5, 6, 7};
+        int k = 3;
 
-       while (left <= right) {
-            int mid = left + (right - left)/2;
+        int[] result = findBestResult(numsArray, k);
 
-            if(numsArray[mid] == target){
-                first = mid;
-                right = mid - 1;
-            }
-            else if(numsArray[mid] < target){
-                left = mid + 1;
-            }
-            else {
-                right = mid - 1;
-            }
-       }
-
-        return first;
-    }
-    public static int findBestResult2(int[] numsArray, int target){
-        int last = -1;
-        int left = 0;
-        int right = numsArray.length - 1;
-
-        while (left <= right) {
-            int mid = left + (right - left)/2;
-
-            if(numsArray[mid] == target){
-                last = mid;
-                left = mid + 1;
-            }
-            else if(numsArray[mid] < target){
-                left = mid + 1;
-            }
-            else {
-                right = mid - 1;
-            }
+        for (int i : result) {
+            System.out.print(i + " ");
         }
-        return last;
+    }   
+
+    public static int[] findBestResult(int[] numsArray, int k) {
+        
+        for (int i = 0; i < 3; i++) {
+            int last = numsArray[numsArray.length - 1];
+
+            System.out.println("last: " + last);
+            for (int j = numsArray.length - 1; j > 0; j--) {
+                numsArray[j] = numsArray[j-1];   
+            }
+
+            numsArray[0] = last;
+        }
+
+        return numsArray;
     }
 }
