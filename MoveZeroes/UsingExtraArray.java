@@ -1,6 +1,6 @@
 package MoveZeroes;
 
-public class BruteForceApproach {
+public class UsingExtraArray {
     public static void main(String[] args) {
         // nums = [0, 1, 0, 3, 12]
 
@@ -16,19 +16,15 @@ public class BruteForceApproach {
     }   
 
     public static int[] findBestResult(int[] numsArray) {
+        int[] newArray = new int[numsArray.length];
+        int count = 0;
         for (int i = 0; i < numsArray.length; i++) {
-            if (numsArray[i] == 0) {
-                for (int j = i; j < numsArray.length - 1; j++) {
-                    numsArray[j] = numsArray[j + 1];
-                }
-                numsArray[numsArray.length - 1] = 0;
-                i--; // check again from same position
+            if(numsArray[i] != 0){
+                newArray[count] = numsArray[i];
+                count++;
             }
         }
-        return numsArray;
+
+        return newArray;
     }
 }
-
-
- 
-            
