@@ -6,39 +6,36 @@ import java.util.HashSet;
 public class Practice {
 
     public static void main(String[] args) {
-        // Input: s = "abcabcbb"
-        // Output: 3
-        // Explanation: The answer is "abc", with length = 3.
+        // Input: nums = [2, 1, 5, 1, 3, 2], k = 3  
+        // Output: 9  
+        // Explanation: Subarray [5, 1, 3] has the largest sum = 9.
+        
+        
 
-        // Input: s = "bbbbb"
-        // Output: 1
-        // Explanation: The answer is "b", with length = 1.
-
-
-        // Input: s = "pwwkew"
-        // Output: 3
-        // Explanation: The answer is "wke", with length = 3.
-
-        String s = "abcabcbb";
-
-        int result = findBestResult(s);
+        int[] numsArray = {4, 2, 1, 7, 8, 1, 2, 8, 4};
+        int k = 3;
+        int result = findBestResult(numsArray, k);
 
         System.out.print(result + " ");
     }   
 
-    public static int findBestResult(String s) {
+    public static int findBestResult(int[] numsArray, int k) {
+        int minSum = 0;
         int left = 0;
-        int maxCount = 0;
-        
-        HashSet<Character> hashSet = new HashSet<>();
+        int currentSum = 0;
 
-        for (int right = 0; right < s.length(); right++) {
-            if(hashSet.contains(s.charAt(right))){
+        for (int right = 0; right < numsArray.length; right++) {
+            currentSum += numsArray[right];
 
+            if(right >= k - 1){
+                minSum = Math.min(minSum, currentSum);
+
+                currentSum -= numsArray[left];
+
+                left++;
             }
         }
 
-
-        return maxCount;
+        return minSum;
     }
 }
