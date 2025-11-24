@@ -1,9 +1,6 @@
-package practice;
+package RomanToInteger;
 
-import java.util.HashMap;
-import java.util.HashSet;
-
-public class Practice {
+public class BruteForceApproach {
 
     public static void main(String[] args) {
         // Input:  s = "III"      → Output: 3
@@ -74,6 +71,5 @@ public class Practice {
 
         return result;
     }
-
-        
+    
 }
