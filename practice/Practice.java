@@ -21,58 +21,48 @@ public class Practice {
     }   
 
     public static int findBestResult(String s) {
-    
         int result = 0;
 
         for (int i = 0; i < s.length(); i++) {
+            int currentValue = getValue(s.charAt(i));
 
             if(i + 1 < s.length()){
-                String twoChars = s.substring(i, i + 2);
+                int nextValue = getValue(s.charAt(i + 1));
 
-                if(twoChars.equals("IV")){
-                    result += 4;
-                    i++;
-                    continue;
+                if(currentValue < nextValue){
+                    result -= currentValue;
                 }
-                else if(twoChars.equals("IX")){
-                    result += 9;
-                    i++;
-                    continue;
-                }
-                else if(twoChars.equals("XL")){
-                    result += 40;
-                    i++;
-                    continue;
-                }
-                else if(twoChars.equals("XC")){
-                    result += 90;
-                    i++;
-                    continue;
-                }
-                else if(twoChars.equals("CD")){
-                    result += 400;
-                    i++;
-                    continue;
-                }
-                else if(twoChars.equals("CM")){
-                    result += 900;
-                    i++;
-                    continue;
+                else {
+                    result += currentValue;
                 }
             }
-
-            char ch = s.charAt(i);
-            if(ch == 'I') result += 1;
-            else if(ch == 'V') result += 5;
-            else if(ch == 'X') result += 10;
-            else if(ch == 'L') result += 50;
-            else if(ch == 'C') result += 100;
-            else if(ch == 'D') result += 500;
-            else if(ch == 'M') result += 1000;
-            
+            else {
+                result += currentValue;
+            }
         }
 
         return result;
+    }
+
+    public static int getValue(char ch){
+        switch (ch) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                return 0;
+        }
     }
 
         
