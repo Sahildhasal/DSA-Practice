@@ -1,44 +1,15 @@
 package practice;
 
+import java.io.IOException;
 
 public class Practice {
 
-    public static void main(String[] args) {
-        // Input: nums = [1,1,2]
-        // Output: 2, nums = [1,2,_]
-        // Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
-        // It does not matter what you leave beyond the returned k (hence they are underscores).
-        // Example 2:
+    public static void main(String[] args) throws IOException {
+        System.out.println("parent process running");
 
-        // Input: nums = [0,0,1,1,1,2,2,3,3,4]
-        // Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
-        // Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
-        // It does not matter what you leave beyond the returned k (hence they are underscores).
-         
-        int[] numsArray = {0,0,1,1,1,2,2,3,3,4};
+        Process process = Runtime.getRuntime().exec("notepad");
 
-        int result = findBestResult(numsArray);
-
-        System.out.println("result: " + result);
-    }   
-
-    public static int findBestResult(int[] numsArray) {
-
-        if(numsArray.length == 0){
-            return 0;
-        }
-
-        int i = 0;
-
-        for (int j = 1; j < numsArray.length; j++) {
-            if(numsArray[j] != numsArray[i]){
-                i++;
-                numsArray[i] = numsArray[j];
-            }   
-        }
-
-        return i + 1;
-        
+        System.out.println("child process created " + process);
     }
        
 }
