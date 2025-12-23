@@ -19,7 +19,7 @@ public class OptimizedApproach {
         // Input: s = "abc"
         // Output: false
         
-        String s = "A man, a plan, a canal: Panama";
+        String s = "carac";
         boolean result = findBestResult(s);
 
         // for (char c : result) {
@@ -33,14 +33,40 @@ public class OptimizedApproach {
         int right = s.length() - 1;
 
         while(left < right){
-            Character leftChar = s.charAt(left);
-            Character rightChar = s.charAt(right);
+            char leftChar = s.charAt(left);
+            char rightChar = s.charAt(right);
+            
+            if(leftChar == rightChar) {
+                left++;
+                right--;
+            }
+            else {
+
+                boolean option1 = isPalindrome(s, left + 1, right);
+
+                boolean option2 = isPalindrome(s, left, right - 1);
+
+                return option1 || option2;
+            }
+        }
+
+        return true;
+    }
+
+    public static boolean isPalindrome(String s, int start, int end) {
+        int i = start;
+        int j = end;
+
+        while (i < j){
+            char leftChar = s.charAt(i);
+            char rightChar = s.charAt(j);
 
             if(leftChar != rightChar){
                 return false;
             }
-            left++;
-            right--;
+
+            i++;
+            j--;
         }
 
         return true;
