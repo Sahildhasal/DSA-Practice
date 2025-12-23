@@ -4,7 +4,9 @@ public class OptimizedPointerApproach {
     
     public static void main(String[] args) {
 
-        // A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+        // A phrase is a palindrome if, after converting all uppercase letters into lowercase
+        //  letters and removing all non-alphanumeric characters, it reads the same forward and backward.
+        //  Alphanumeric characters include letters and numbers.
 
         // Given a string s, return true if it is a palindrome, or false otherwise.
 
@@ -27,7 +29,7 @@ public class OptimizedPointerApproach {
         // Explanation: s is an empty string "" after removing non-alphanumeric characters.
         // Since an empty string reads the same forward and backward, it is a palindrome.
              
-            String s = " ";
+            String s = "A man, a plan, a canal: Panama";
             
             boolean result = findBestResult(s);
 
@@ -36,7 +38,35 @@ public class OptimizedPointerApproach {
         }   
     
         public static boolean findBestResult(String s) {
-            return false;   
+            int left = 0;
+            int right = s.length() - 1;
+
+            while(left < right){
+
+                while(left < right && !Character.isLetterOrDigit(s.charAt(left))){
+                    left++;
+                }
+
+                while(left < right && !Character.isLetterOrDigit(s.charAt(right))){
+                    right--;
+                }
+
+                if(left < right){
+                    char leftChar = Character.toLowerCase(s.charAt(left));
+                    char rightChar = Character.toLowerCase(s.charAt(right));
+
+                    if(leftChar != rightChar){
+                        return false;
+                    }            
+                    
+                    left++;
+                    right--;
+
+                }
+
+            }
+
+            return true;
         }
     }
 
