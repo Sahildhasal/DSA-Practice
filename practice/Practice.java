@@ -1,15 +1,25 @@
 package practice;
 
-import java.io.IOException;
+import java.util.ArrayList;
 
 public class Practice {
+ public static void main(String[] args) {
+         
+        // arr = [1, 3, 2, 6, -1, 4, 1, 8, 2]
+        // k = 4
+        // Output  [2.2, 2.8, 2.4, 3.6, 2.8]
 
-    public static void main(String[] args) throws IOException {
-        System.out.println("parent process running");
+        int[] nums = {1, 3, 2, 6, -1, 4, 1, 8, 2};
+        int k = 4;
+        double[] result = findBestResult(nums, k);
 
-        Process process = Runtime.getRuntime().exec("notepad");
+        for (double d : result) {
+            System.out.print(d + " ");   
+        }
+    }   
 
-        System.out.println("child process created " + process);
+    public static double[] findBestResult(int[] nums, int k) {
+        
+        return new double[-1];
     }
-       
 }
